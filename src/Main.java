@@ -94,7 +94,7 @@ public class Main extends Canvas implements Runnable{
 	}
 	
 	public void updateGameLogic(){
-		if(HUD.HEALTH <= 0){
+		if(HUD.HP <= 0){
 			System.out.println("GAME OVER");
 			// later will be switch to a screen for Game Over 
 			System.exit(1);

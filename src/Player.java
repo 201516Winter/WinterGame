@@ -19,7 +19,7 @@ public class Player extends GameObject {
 		
 		//WIDTH, HEIGTH - object size - number (which is covered by the window board)
 		x = Main.constrain(x, 0, Main.WIDTH - 30 - 5);
-		y = Main.constrain(y, 0, Main.HEIGHT - 30 - 28);
+		y = Main.constrain(y, HUD.height, Main.HEIGHT - 30 - 28);
 		
 		collisionAnalyse();
 	}
@@ -31,7 +31,7 @@ public class Player extends GameObject {
 					// remove object 
 					// handler.removeObject(object);
 					// reduce health 
-					HUD.HEALTH--;
+					HUD.HP--;
 
 			}
 		}
@@ -40,7 +40,7 @@ public class Player extends GameObject {
 	@Override
 	public void updateGraphic(Graphics g) {
 		//This is an example to make a representation to the object player
-		g.setColor(Color.blue);
+		g.setColor(Color.white);
 		g.fillRect(x, y, 30, 30);
 	}
 

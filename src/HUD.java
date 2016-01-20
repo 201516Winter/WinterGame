@@ -5,20 +5,51 @@ import java.awt.Rectangle;
 
 public class HUD {
 	
-	public static int HEALTH = 100;
+	public static int HP = 100;
+	private int colorValue = 255;
+	public final static int height = 50;
+	private int HPBarWidth = 200;
 	
 	public void updateHUDLogic(){
-		// HEALTH--;
 
-		HEALTH = Main.constrain(HEALTH, 0, 100);
+		HP = Main.constrain(HP, 0, 100);
+		
+		colorValue = Main.constrain(colorValue, 0, 255);
+		
+		colorValue = HP * 2;
+		
 	}
 	
 	public void updateHUDGraphic(Graphics g){
+		// Health
 		g.setColor(Color.gray);
-		g.fillRect(15, 15, 200, 32);
-		g.setColor(Color.green);
-		g.fillRect(15, 15, HEALTH*2, 32);
+		g.fillRect(0, 0, this.HPBarWidth, this.height);
+		g.setColor(new Color(75, colorValue,0));
+		g.fillRect(0, 0, HUD.HP * 2, this.height);
 		g.setColor(Color.white);
-		g.drawRect(15, 15, 200, 32);
+		g.drawRect(0, 0, this.HPBarWidth, this.height);
+		
+		// Score
+		int scoreBarWidth = this.HPBarWidth*3/4;
+		
+		g.setColor(Color.gray);
+		g.fillRect(this.HPBarWidth, 0, scoreBarWidth , this.height);
+		g.setColor(Color.white);
+		g.drawRect(this.HPBarWidth, 0, scoreBarWidth, this.height);
+		// Button
+		int button1_xpos = this.HPBarWidth + scoreBarWidth;
+		int button_width = (Main.WIDTH-button1_xpos)/2;
+		g.setColor(Color.gray);
+		g.fillRect(button1_xpos, 0, button_width, this.height);
+		g.setColor(Color.white);
+		g.drawRect(button1_xpos, 0, button_width, this.height);
+		// Button 2
+		int button2_xpos = this.HPBarWidth + scoreBarWidth + button_width;
+		g.setColor(Color.gray);
+		g.fillRect(button2_xpos, 0, button_width, this.height);
+		g.setColor(Color.white);
+		g.drawRect(button2_xpos, 0, button_width, this.height);
+		
+
 	}
 }

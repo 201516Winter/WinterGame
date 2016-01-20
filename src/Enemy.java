@@ -11,7 +11,7 @@ public class Enemy extends GameObject{
 
 	@Override
 	public void updateLogic() {
-		if(y < 0 || y > Main.HEIGHT - 15 - 28) veloY *= -1;
+		if(y < HUD.height || y > Main.HEIGHT - 15 - 28) veloY *= -1;
 		
 		y += veloY;
 	}
