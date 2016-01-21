@@ -67,9 +67,9 @@ public class Main extends Canvas implements Runnable{
 		
 		//play background Music
 		
-//		URL musicLink = Main.class.getResource("music.wav");
-//		AudioClip bgMusic = Applet.newAudioClip(musicLink);
-//		bgMusic.loop();
+		URL musicLink = Main.class.getResource("music.wav");
+		AudioClip bgMusic = Applet.newAudioClip(musicLink);
+		bgMusic.loop();
 		
 		while(isRunning){
 			long now = System.nanoTime();
