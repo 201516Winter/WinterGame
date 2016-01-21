@@ -56,7 +56,7 @@ public class Player extends GameObject {
 		GameObject temp;
 		for(int i = 0; i < handler.getAllObjects().size(); i++){
 			temp = handler.getAllObjects().get(i);
-			if(!(temp instanceof Player)){
+			if(!(temp instanceof Player) && !(temp instanceof Earth)){
 				if(this.getBounds().intersects(temp.getBounds())){
 					this.changeHealth(temp);
 					handler.removeObject(temp);
