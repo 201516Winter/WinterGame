@@ -30,6 +30,8 @@ public class Controller extends KeyAdapter {
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
+		if(key == KeyEvent.VK_ESCAPE)	System.exit(1);
+		
 		GameObject object;
 		for(int i = 0; i < handler.getAllObjects().size(); i++){
 			object = handler.getAllObjects().get(i);
@@ -40,7 +42,6 @@ public class Controller extends KeyAdapter {
 				case KeyEvent.VK_LEFT: leftIsHolding = true; break;
 				case KeyEvent.VK_RIGHT: rightIsHolding = true; break;
 				case KeyEvent.VK_SPACE: spaceIsHolding = true; break;
-				case KeyEvent.VK_ESCAPE: System.exit(1);
 				}
 				setMotion((Player)object);
 			}
