@@ -21,15 +21,18 @@ public class Main extends Canvas implements Runnable{
 	private GameObjectHandler handler;
 	private Menu menu;
 	private HUD hud;
+	
 	private Spawner spawner;
+	private Controller controller;
 	
 	public Main(){
 		handler = new GameObjectHandler();
-		spawner = new Spawner(handler);
 		hud = new HUD(handler);
+		spawner = new Spawner(handler);
 		menu = new Menu(this, spawner, hud);
+		controller = new Controller(handler);
 		
-		this.addKeyListener(new Controller(handler));
+		this.addKeyListener(controller);
 		this.addMouseListener(menu);
 		
 		new Window(WIDTH + 50, HEIGHT+50, "Skip the ball!", this);
@@ -64,9 +67,9 @@ public class Main extends Canvas implements Runnable{
 		
 		//play background Music
 		
-		URL musicLink = Main.class.getResource("music.wav");
-		AudioClip bgMusic = Applet.newAudioClip(musicLink);
-		bgMusic.loop();
+//		URL musicLink = Main.class.getResource("music.wav");
+//		AudioClip bgMusic = Applet.newAudioClip(musicLink);
+//		bgMusic.loop();
 		
 		while(isRunning){
 			long now = System.nanoTime();
@@ -99,9 +102,11 @@ public class Main extends Canvas implements Runnable{
 			hud.updateHUDLogic();
 			spawner.spawn();
 			
-			if(HUD.HEALTH <= 0){
+			if(HUD.HEALTH <= 0 || Earth.dead){
 				HUD.HEALTH = 100;
+				Earth.dead = false;
 				state = GameState.Gameover;
+				controller.resetMotions();
 				handler.removeAllObject();
 			}
 			
