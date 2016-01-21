@@ -30,6 +30,7 @@ public class Menu extends MouseAdapter{
 		if(main.state == GameState.Menu && Main.isMouseOver(mx, my, 125, 150, 200, 70)){ // Start
 			main.state = GameState.Game;
 			spawner.init();
+			hud.resetScore();
 		}else if(main.state == GameState.Menu && Main.isMouseOver(mx, my, 125, 280, 200, 70)){ // Score
 			main.state = GameState.Score;
 		}else if(main.state == GameState.Menu && Main.isMouseOver(mx, my, 125, 410, 200, 70)){ // About

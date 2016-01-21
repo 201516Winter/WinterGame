@@ -57,17 +57,25 @@ public class HUD {
 		int button_width = (Main.WIDTH-button1_xpos)/2;
 		g.setColor(Color.gray);
 		g.fillRect(button1_xpos, 0, button_width, HUD.height);
+		g.setColor(Color.red);
+		g.drawString("Pause", button1_xpos+8, 25);
 		g.setColor(Color.white);
 		g.drawRect(button1_xpos, 0, button_width, HUD.height);
 		// Button 2
 		int button2_xpos = this.HPBarWidth + scoreBarWidth + button_width;
 		g.setColor(Color.gray);
 		g.fillRect(button2_xpos, 0, button_width, HUD.height);
+		g.setColor(Color.red);
+		g.drawString("Exit", button2_xpos+12, 25);
 		g.setColor(Color.white);
 		g.drawRect(button2_xpos, 0, button_width, HUD.height);
 	}
 	
 	public int score(){
 		return this.score;
+	}
+	
+	public void resetScore(){
+		this.score = 0;
 	}
 }
